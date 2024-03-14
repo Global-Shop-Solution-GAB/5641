@@ -1,0 +1,1136 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.FrmAging..Create
+Gui.FrmAging..Size(17565,10695)
+Gui.FrmAging..MinX(0)
+Gui.FrmAging..MinY(0)
+Gui.FrmAging..Position(0,0)
+Gui.FrmAging..BackColor(-2147483633)
+Gui.FrmAging..MousePointer(0)
+Gui.FrmAging..Event(UnLoad,FrmAging_UnLoad)
+Gui.FrmAging..Caption("Aging")
+Gui.FrmAging.GSGCAging.Create(GsGridControl)
+Gui.FrmAging.GSGCAging.Size(17190,9405)
+Gui.FrmAging.GSGCAging.Position(105,630)
+Gui.FrmAging.dtpAgeDate.Create(DatePicker)
+Gui.FrmAging.dtpAgeDate.Size(1935,285)
+Gui.FrmAging.dtpAgeDate.Position(135,210)
+Gui.FrmAging.cmdLoad.Create(Button)
+Gui.FrmAging.cmdLoad.Size(855,375)
+Gui.FrmAging.cmdLoad.Position(5025,180)
+Gui.FrmAging.cmdLoad.Caption("Load")
+Gui.FrmAging.cmdLoad.Event(Click,cmdLoad_Click)
+Gui.FrmAging.proBar1.Create(ProgressBar)
+Gui.FrmAging.proBar1.Size(3405,255)
+Gui.FrmAging.proBar1.Position(13890,240)
+Gui.FrmAging.proBar1.Visible(False)
+Gui.FrmAging.cmdExport.Create(Button)
+Gui.FrmAging.cmdExport.Size(855,375)
+Gui.FrmAging.cmdExport.Position(5985,180)
+Gui.FrmAging.cmdExport.Caption("Export")
+Gui.FrmAging.cmdExport.Event(Click,cmdExport_Click)
+Gui.FrmAging.cmdSelectCustAndCCC.Create(Button)
+Gui.FrmAging.cmdSelectCustAndCCC.Size(2655,375)
+Gui.FrmAging.cmdSelectCustAndCCC.Position(2250,180)
+Gui.FrmAging.cmdSelectCustAndCCC.Caption("Select Customer and CCC")
+Gui.FrmAging.cmdSelectCustAndCCC.Event(Click,cmdSelectCustAndCCC_Click)
+Gui.Form..Create
+Gui.Form..Caption("Customer and Company Code Selection")
+Gui.Form..Size(7200,10155)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form.gsCCC.Create(GsGridControl)
+Gui.Form.gsCCC.Size(2610,7470)
+Gui.Form.gsCCC.Position(4365,1800)
+Gui.Form.cmdOK.Create(Button)
+Gui.Form.cmdOK.Size(855,375)
+Gui.Form.cmdOK.Position(90,9360)
+Gui.Form.cmdOK.Caption("OK")
+Gui.Form.cmdOK.Event(Click,cmdOK_Click)
+Gui.Form.chkAllCustomers.Create(CheckBox)
+Gui.Form.chkAllCustomers.Size(1560,360)
+Gui.Form.chkAllCustomers.Position(90,720)
+Gui.Form.chkAllCustomers.Caption("All Customers")
+Gui.Form.chkAllCustomers.Event(Click,chkAllCustomers_Click)
+Gui.Form.gsCustomer.Create(GsGridControl)
+Gui.Form.gsCustomer.Size(4155,7485)
+Gui.Form.gsCustomer.Position(90,1800)
+Gui.Form.gsCustomer.Event(RowCellClick,gsCustomer_RowCellClick)
+Gui.Form.cmdAdd.Create(Button)
+Gui.Form.cmdAdd.Size(855,375)
+Gui.Form.cmdAdd.Position(3405,1365)
+Gui.Form.cmdAdd.Caption("Add")
+Gui.Form.cmdAdd.Event(Click,cmdAdd_Click)
+Gui.Form.txtBegCust.Create(TextBox,"",True,930,300,0,90,1395,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtBegCust.MaxLength(6)
+Gui.Form.txtBegCust.Event(LostFocus,txtBegCust_LostFocus)
+Gui.Form.txtEndCust.Create(TextBox,"",True,930,300,0,1770,1395,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtEndCust.MaxLength(6)
+Gui.Form.txtEndCust.Event(LostFocus,txtEndCust_LostFocus)
+Gui.Form.cmdBrowseBeginningCust.Create(Button)
+Gui.Form.cmdBrowseBeginningCust.Size(435,375)
+Gui.Form.cmdBrowseBeginningCust.Position(1125,1365)
+Gui.Form.cmdBrowseBeginningCust.Caption("^")
+Gui.Form.cmdBrowseBeginningCust.Event(Click,cmdBrowseBeginningCust_Click)
+Gui.Form.cmdBrowseEndingCust.Create(Button)
+Gui.Form.cmdBrowseEndingCust.Size(435,375)
+Gui.Form.cmdBrowseEndingCust.Position(2805,1365)
+Gui.Form.cmdBrowseEndingCust.Caption("^")
+Gui.Form.cmdBrowseEndingCust.Event(Click,cmdBrowseEndingCust_Click)
+Gui.Form.lbl1.Create(Label,"Beginning Customer",True,1635,255,0,90,1125,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl2.Create(Label,"Ending Customer",True,1440,255,0,1770,1125,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl3.Create(Label,"Company Codes",True,1410,255,0,4320,825,True,0,"Arial",8,-2147483633,0)
+Gui.Form.cmdUncheckAllCCC.Create(Button)
+Gui.Form.cmdUncheckAllCCC.Size(1080,375)
+Gui.Form.cmdUncheckAllCCC.Position(5895,1380)
+Gui.Form.cmdUncheckAllCCC.Caption("Uncheck All")
+Gui.Form.cmdUncheckAllCCC.Event(Click,cmdUncheckAllCCC_Click)
+Gui.Form.cmdCheckAllCCC.Create(Button)
+Gui.Form.cmdCheckAllCCC.Size(1080,375)
+Gui.Form.cmdCheckAllCCC.Position(5895,930)
+Gui.Form.cmdCheckAllCCC.Caption("Check All")
+Gui.Form.cmdCheckAllCCC.Event(Click,cmdCheckAllCCC_Click)
+Gui.Form.dtpAgeDate.Create(DatePicker)
+Gui.Form.dtpAgeDate.Size(1935,285)
+Gui.Form.dtpAgeDate.Position(75,345)
+Gui.Form.lbl4.Create(Label,"Aging Date",True,1935,255,0,105,135,True,0,"Arial",8,-2147483633,0)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+v.Global.bPrintInvoice.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'BN, Aug 23, 2019
+'Customer: Ohio Penal Industries
+'This program will pull Aging data from multiple CCC
+
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	
+	f.ODBC.Connection!conx.OpenCompanyConnection(500)
+	
+	f.Intrinsic.Control.CallSub("Check_And_Create_Custom_Folder")
+	f.Intrinsic.Control.CallSub("Create_dtCustomer_dtCCC")
+	
+	gui.FrmAging.GSGCAging.anchor(15)
+	gui.FrmAging..Show	
+
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+
+Program.Sub.Main.End
+
+Program.Sub.Check_And_Create_Custom_Folder.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.bEx.Declare
+	v.Local.sDir.Declare
+	
+	f.Intrinsic.String.Build("{0}\Custom",v.Caller.GlobalDir,v.Local.sDir)
+	f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("{0}\Custom\5641",v.Caller.GlobalDir,v.Local.sDir)
+	f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("{0}\Custom\5641\{1}",v.Caller.GlobalDir,v.Caller.CompanyCode,v.Local.sDir)
+	f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.Control.EndIf	
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Check_And_Create_Custom_Folder.End
+
+Program.Sub.Create_dtCustomer_dtCCC.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sDSNList.Declare
+	v.Local.bEx.Declare
+	v.Local.sCCC.Declare
+	v.Local.iCnt.Declare
+
+	
+	'dtCustomer
+	f.Data.DataTable.Create("dtCustomer",True)
+	f.Data.DataTable.AddColumn("dtCustomer","Customer","String","")
+	f.Data.DataTable.AddColumn("dtCustomer","Name","String","")
+	f.Data.DataTable.AddColumn("dtCustomer","Deleted","String","Delete")
+	f.Data.DataView.Create("dtCustomer","dvCustomer")
+	f.Intrinsic.Control.CallSub("Format_gsCustomer")
+	
+	'PDSN
+	f.Data.DataTable.Create("CCC",True)
+	f.Data.DataTable.AddColumn("CCC","Code","String","")
+	f.Data.DataTable.AddColumn("CCC","Selected","Boolean",False)
+
+	Function.ODBC.Misc.GETDSNLIST(v.Local.sDSNList)
+	F.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sDSNList.UBound,1)
+		f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"GLOBAL_",True,V.Local.bEx)
+		f.Intrinsic.Control.If(v.Local.bEx)
+			f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"TEMP",True,v.Local.bEx)
+			f.Intrinsic.Control.If(v.Local.bEx.Not)
+				f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"DEFAULT",True,v.Local.bEx)
+				F.Intrinsic.Control.If(V.Local.bEx.Not)
+					f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"COMMON",True,v.Local.bEx)
+					F.Intrinsic.Control.If(V.Local.bEx.Not)
+						f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"PLA",True,v.Local.bEx)
+						F.Intrinsic.Control.If(V.Local.bEx.Not)
+							f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"TPS",True,v.Local.bEx)
+							F.Intrinsic.Control.If(V.Local.bEx.Not)
+								f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"OPI",True,v.Local.bEx)
+								F.Intrinsic.Control.If(V.Local.bEx.Not)
+									f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"_Z",True,v.Local.bEx)
+										F.Intrinsic.Control.If(V.Local.bEx.Not)
+										
+											f.Intrinsic.String.Replace(v.Local.sDSNList(v.Local.iCnt),"GLOBAL_","",V.Local.sCCC)
+											F.Data.DataTable.AddRow("CCC","Code",v.Local.sCCC)
+										
+										F.Intrinsic.Control.EndIf									
+								F.Intrinsic.Control.EndIf
+							F.Intrinsic.Control.EndIf
+						F.Intrinsic.Control.EndIf
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	f.Data.DataView.Create("CCC","dvCCC")	
+	gui.Form.gsCCC.AddGridviewFromDatatable("gvCCC","CCC")
+	Gui.Form.gsCCC.SetGridViewProperty("gvCCC","AllowSort",True)
+	Gui.Form.gsCCC.SetGridViewProperty("gvCCC","AllowFilter",True)
+	Gui.Form.gsCCC.SetGridViewProperty("gvCCC","OptionsViewShowAutoFilterRow",True)
+	gui.Form.gsCCC.SetColumnProperty("gvCCC","Selected","AllowEdit",True)
+	gui.Form.gsCCC.SetColumnProperty("gvCCC","Selected","ReadOnly",False)	
+	gui.Form.gsCCC.MainView("gvCCC")
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Create_dtCustomer_dtCCC.End
+
+Program.Sub.Format_gsCustomer.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	
+	gui.Form.gsCustomer.AddGridviewFromDatatable("gvCustomer","dtCustomer")
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","AllowSort",True)
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","AllowFilter",True)
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","OptionsFindAlwaysVisible",True)
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","OptionsViewShowAutoFilterRow",True)
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Customer","Width","30")
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","Width","30")
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","AllowEdit",False)
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","ReadOnly",True)
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","Caption","Delete")
+	
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","HeaderHAlignment","center")
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","CellHAlignment","center")
+	
+	gui.Form.gsCustomer.ColumnEdit("gvCustomer","Deleted","editorbutton","Delete")
+	gui.Form.gsCustomer.MainView("gvCustomer")
+
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Format_gsCustomer.End
+
+Program.Sub.gsCustomer_RowCellClick.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sColumn.Declare
+	
+	v.Local.sColumn.Set(v.Args.Column)
+	f.Intrinsic.Control.If(v.Local.sColumn.UCase,=,"DELETED")
+		F.Data.DataTable.DeleteRow("dtCustomer",V.Args.RowIndex)
+		f.Data.DataTable.AcceptChanges("dtCustomer")
+	f.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsCustomer_RowCellClick.End
+
+Program.Sub.cmdBrowseBeginningCust_Click.Start
+'Browse Beginning Customer
+F.Intrinsic.Control.Try
+	V.Local..BulkDeclareString(sError,sRet)
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet.IsCancel,=,False)
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		gui.Form.txtBegCust.Text(v.Local.sRet(0))
+		gui.Form.txtEndCust.Text(v.Local.sRet(0))
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseBeginningCust_Click.End
+
+Program.Sub.cmdBrowseEndingCust_Click.Start
+'Browse Ending Customer
+F.Intrinsic.Control.Try
+	V.Local..BulkDeclareString(sError,sRet)
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet.IsCancel,=,False)
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		gui.Form.txtEndCust.Text(v.Local.sRet(0))
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseEndingCust_Click.End
+
+Program.Sub.cmdAdd_Click.Start
+'Browse Ending Customer
+F.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sRet.Declare
+	v.Local.sSQL.Declare
+	v.Local.sBegCust.Declare
+	v.Local.sEndCust.Declare
+	v.Local.sBegName.Declare
+	v.Local.sEndName.Declare
+	v.Local.iCnt.Declare
+	v.Local.sFilter.Declare
+	
+	F.Intrinsic.String.UCase(v.Screen.Form!txtBegCust.Text.Trim,V.Local.sBegCust)
+	F.Intrinsic.String.UCase(v.Screen.Form!txtEndCust.Text.Trim,V.Local.sEndCust)
+	
+	'Check Beginning Customer
+	f.Intrinsic.String.Build("Select Customer,Name_Customer from v_customer_master where customer = '{0}'",v.Local.sBegCust,v.Local.sSQL)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,=,"")
+		f.Intrinsic.UI.Msgbox("Beginning Customer does not exist.","Attention")
+		f.Intrinsic.Control.ExitSub		
+	f.Intrinsic.Control.EndIf
+
+	'Check Ending Customer
+	f.Intrinsic.String.Build("Select Customer,Name_Customer from v_customer_master where customer = '{0}'",v.Local.sEndCust,v.Local.sSQL)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,=,"")
+		f.Intrinsic.UI.Msgbox("Ending Customer does not exist.","Attention")
+		f.Intrinsic.Control.ExitSub		
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Adding customer...")
+	f.Intrinsic.Control.If(v.DataTable.Temp.Exists)
+		f.Data.DataTable.Close("Temp")
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Select Customer,Name_Customer from v_customer_master where customer between '{0}' and '{1}' ORDER BY CUSTOMER",v.Local.sBegCust,v.Local.sEndCust,v.Local.sSQL)
+	f.Data.DataTable.CreateFromSQL("Temp","conx",v.Local.sSQL,True)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.Temp.RowCount--,1)
+		f.Intrinsic.String.Build("Customer = '{0}'",v.DataTable.Temp(v.Local.iCnt).Customer!FieldValString,v.Local.sFilter)
+		f.Data.DataTable.Select("dtCustomer",v.Local.sFilter,v.Local.sRet)
+		f.Intrinsic.Control.If(v.Local.sRet,=,"***NORETURN***")
+			F.Data.DataTable.AddRow("dtCustomer","Customer",v.DataTable.Temp(v.Local.iCnt).Customer!FieldValString,"Name",v.DataTable.Temp(v.Local.iCnt).Name_Customer!FieldValString)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	f.Intrinsic.UI.CloseWaitDialog	
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdAdd_Click.End
+
+Program.Sub.cmdCheckAllCCC_Click.Start
+f.Data.DataTable.SetValue("CCC",-1,"Selected",True)
+Program.Sub.cmdCheckAllCCC_Click.End
+
+Program.Sub.cmdUncheckAllCCC_Click.Start
+f.Data.DataTable.SetValue("CCC",-1,"Selected",False)
+Program.Sub.cmdUncheckAllCCC_Click.End
+
+Program.Sub.txtBegCust_LostFocus.Start
+V.Local.sBegCust.Declare
+v.Local.sBegCust.Set(v.Screen.Form!txtBegCust.Text)
+gui.Form.txtBegCust.Text(v.Local.sBegCust.UCase)
+gui.Form.txtEndCust.Text(v.Local.sBegCust.UCase)
+Program.Sub.txtBegCust_LostFocus.End
+
+Program.Sub.cmdOK_Click.Start
+gui.Form..Visible(False)
+gui.FrmAging..Show
+Program.Sub.cmdOK_Click.End
+Program.Sub.cmdLoad_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare	
+
+		
+	'Validating CCC
+	f.Data.DataView.SetFilter("CCC","dvCCC","Selected = 1")
+	f.Intrinsic.Control.If(v.DataView.CCC!dvCCC.RowCount,=,0)
+		f.Intrinsic.UI.Msgbox("Please select Company Code","Attention")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	'Validating Customer
+	f.Intrinsic.Control.If(v.DataTable.dtCustomer.RowCount,=,0)
+		f.Intrinsic.UI.Msgbox("Please select Customer.","Attention")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf		
+	f.Intrinsic.UI.InvokeWaitDialog("Loading...")
+	f.Intrinsic.Control.CallSub("LoadDTAge")		
+	f.Intrinsic.UI.CloseWaitDialog
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdLoad_Click.End
+
+Program.Sub.LoadDTAge.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.iCnt.Declare
+	V.Local.sPDSN.Declare
+	v.Local.sCustomers.Declare
+
+'	Gui.FrmAging.lblStatus.Caption("Loading AR Information....")
+
+	'F.Global.General.OverrideCompany(v.DataTable.CCC(0).Code!FieldValString)	
+	
+	f.Data.DataView.ToString("dtCustomer","dvCustomer","Customer","","','",v.Local.sCustomers)
+	f.Intrinsic.String.Build("and Customer in ('{0}')",v.Local.sCustomers,v.Local.sCustomers)
+	f.Intrinsic.Control.If(v.Screen.Form!chkAllCustomers.Value,=,1)
+		v.Local.sCustomers.Set("")
+	f.Intrinsic.Control.EndIf
+
+	f.Data.DataView.SetFilter("CCC","dvCCC","Selected = 1")
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataView.CCC!dvCCC.RowCount--,1)
+		f.Intrinsic.String.Build("GLOBAL_{0}",v.DataView.CCC!dvCCC(v.Local.iCnt).Code!FieldValString,v.Local.sPDSN)
+		f.Intrinsic.Control.CallSub("LoadIndividualDatatable","sPDSN",v.Local.sPDSN,"sCCC",v.DataView.CCC!dvCCC(v.Local.iCnt).Code!FieldValString,"sCustomers",v.Local.sCustomers)
+		f.Intrinsic.Control.If(v.Local.iCnt,=,0)
+			F.Intrinsic.Control.If(V.DataTable.dtAging.Exists)
+				F.Data.DataTable.Close("dtAging")
+			F.Intrinsic.Control.EndIf	
+			f.Data.DataTable.Clone("dtTempAging","dtAging",True)
+			f.Data.DataTable.Merge("dtTempAging","dtAging",True,1)
+		f.Intrinsic.Control.Else
+			f.Data.DataTable.Merge("dtTempAging","dtAging",True,1)		
+		f.Intrinsic.Control.EndIf	
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	F.Intrinsic.Control.CallSub(LoadGvAging)
+	f.Intrinsic.UI.CloseWaitDialog
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.LoadDTAge.End
+
+Program.Sub.LoadIndividualDatatable.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sSQL.Declare
+	V.Local.dAgingDate.Declare
+	V.Local.sFilter.Declare
+	v.Local.sCustomers.Declare
+
+	F.Intrinsic.Control.If(V.DataTable.dtTempAging.Exists)
+		F.Data.DataTable.Close("dtTempAging")
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.DataTable.dtTempAging0.Exists)
+		F.Data.DataTable.Close("dtTempAging0")
+	F.Intrinsic.Control.EndIf
+	
+	V.Local.dAgingDate.Set(V.Screen.FrmAging!dtpAgeDate.Value)	
+	
+'	F.ODBC.Connection!TempCon.OpenConnection(v.Args.sPDSN, V.Ambient.PUser,V.Ambient.PPass,600)
+	F.ODBC.Connection!TempCon.OpenCompanyConnection(600)
+	
+	F.Intrinsic.String.Build("SELECT LTRIM(RTRIM(UPPER(A.customer))) As CUSTOMER,B.NAME_CUSTOMER,RTrim(C.NAME) as SALESPERSON,A.TERRITORY As BRANCH,LTRIM(RTRIM(UPPER(invoice))) As INVOICE,A.DATE_INVOICE,A.DATE_TRANSACTION,IF(A.DUE_DATE = '1900-01-01',NULL,A.DUE_DATE) AS DUE_DATE,CASE BATCH_CODE WHEN '10' THEN 'Invoice' WHEN '11' THEN 'Cash' WHEN '12' THEN 'Credit Memo' WHEN '13' THEN 'Adjustment' WHEN '15' THEN 'Fin. Charge' WHEN '16' THEN 'Discount' END AS TYPE,IF(REFUND_CK_NO <> '', RTrim(A.REFUND_CK_NO),RTrim(A.REFERENCE)) As REFERENCE,AMT_INVOICE,CONVERT(0,SQL_FLOAT) AS CURRENT1,CONVERT(0,SQL_FLOAT) AS TPD2,CONVERT(0,SQL_FLOAT) AS TPD3,CONVERT(0,SQL_FLOAT) AS OVER,CONVERT(0,SQL_FLOAT) AS NOT_AGED,'' AS COLUMN1,'Adjust' AS ADJUST,'' AS PAY,LTRIM(RTRIM(UPPER(A.customer)))+LTRIM(RTRIM(UPPER(invoice))) As CUSTINV FROM V_AR_OPEN_ITEMS A LEFT JOIN V_CUSTOMER_MASTER B ON A.CUSTOMER = B.CUSTOMER LEFT JOIN V_SALESPERSONS C on A.SALESPERSON = C.ID WHERE A.DATE_TRANSACTION <= '{0}' {1} ORDER BY A.CUSTOMER,A.DATE_INVOICE,A.DATE_TRANSACTION;",V.Local.dAgingDate.PervasiveDate,v.Args.sCustomers,V.Local.sSQL)
+	F.Data.DataTable.CreateFromSQL("dtTempAging0","TempCon",V.Local.sSQL,True)
+	
+	F.Data.DataTable.AddColumn("dtTempAging0","SALES_ORDER",String,"")
+	F.Data.DataTable.AddColumn("dtTempAging0","EMAIL",String,"")
+	F.Data.DataTable.AddColumn("dtTempAging0","TELEPHONE",String,"")
+	F.Data.DataTable.AddColumn("dtTempAging0","ZERO",Float,0)
+	F.Data.DataTable.AddColumn("dtTempAging0","AGE_CASH",Boolean,False)
+	F.Data.DataTable.AddColumn("dtTempAging0","AGE_CASH2",Boolean,False)
+	F.Data.DataTable.AddColumn("dtTempAging0","AGE_CASH3",Boolean,False)
+	
+	'Set Zeros
+	F.Intrinsic.String.Build("SELECT LTRIM(RTRIM(UPPER(customer)))+LTRIM(RTRIM(UPPER(invoice))) As CUSTINV,SUM(AMT_INVOICE) FROM V_AR_OPEN_ITEMS WHERE DATE_TRANSACTION <= '{0}' {1}  GROUP BY CUSTOMER,INVOICE;",V.Local.dAgingDate.PervasiveDate,v.Args.sCustomers,V.Local.sSQL)
+	F.Data.Dictionary.CreateFromSQL("dZero","TempCon",V.Local.sSQL)
+	F.Data.Dictionary.SetDefaultReturn("dZero",0)
+	F.Data.DataTable.FillFromDictionary("dtTempAging0","dZero","CUSTINV","ZERO")
+	F.Data.Dictionary.Close("dZero")
+
+	'Set Age flag for Cash Items
+	F.Intrinsic.String.Build("Select LTRIM(RTRIM(UPPER(customer)))+LTRIM(RTRIM(UPPER(invoice))) As CUSTINV,Cast(If(Count(Invoice) > 1,1,0) as Bit) As AGE_CASH From V_AR_Open_Items Where Batch_Code In ('10','11') And Date_Transaction <= '{0}' {1} Group By Customer,Invoice Order By Invoice;",V.Local.dAgingDate.PervasiveDate,v.Args.sCustomers,V.Local.sSQL)
+	F.Data.Dictionary.CreateFromSQL("dAge","TempCon",V.Local.sSQL)
+	F.Data.Dictionary.SetDefaultReturn("dAge",False)
+	F.Data.DataTable.FillFromDictionary("dtTempAging0","dAge","CUSTINV","AGE_CASH")
+	F.Data.Dictionary.Close("dAge")
+	
+	F.Intrinsic.String.Build("Select LTRIM(RTRIM(UPPER(customer)))+LTRIM(RTRIM(UPPER(invoice))) As CUSTINV,Cast(If(Count(Invoice) > 1,1,0) as Bit) As AGE_CASH From V_AR_Open_Items Where Batch_Code In ('10','12') And Date_Transaction <= '{0}' {1} Group By Customer,Invoice Order By Invoice;",V.Local.dAgingDate.PervasiveDate,v.Args.sCustomers,V.Local.sSQL)
+	F.Data.Dictionary.CreateFromSQL("dAge2","TempCon",V.Local.sSQL)
+	F.Data.Dictionary.SetDefaultReturn("dAge2",False)
+	F.Data.DataTable.FillFromDictionary("dtTempAging0","dAge2","CUSTINV","AGE_CASH2")
+	F.Data.Dictionary.Close("dAge2")
+	
+	F.Intrinsic.String.Build("Select LTRIM(RTRIM(UPPER(customer)))+LTRIM(RTRIM(UPPER(invoice))) As CUSTINV,Cast(If(Count(Invoice) > 1,1,0) as Bit) As AGE_CASH From V_AR_Open_Items Where Batch_Code In ('11','12') And Date_Transaction <= '{0}' {1} Group By Customer,Invoice Order By Invoice;",V.Local.dAgingDate.PervasiveDate,v.Args.sCustomers,V.Local.sSQL)
+	F.Data.Dictionary.CreateFromSQL("dAge3","TempCon",V.Local.sSQL)
+	F.Data.Dictionary.SetDefaultReturn("dAge3",False)
+	F.Data.DataTable.FillFromDictionary("dtTempAging0","dAge3","CUSTINV","AGE_CASH3")
+	F.Data.Dictionary.Close("dAge3")
+			
+	'Set Sales Order
+	f.Intrinsic.Control.If(v.Args.sCustomers,<>,"")
+		f.Intrinsic.String.Replace(v.Args.sCustomers,"and "," ",v.Local.sCustomers)
+		f.Intrinsic.String.Build("Select LTRIM(RTRIM(UPPER(invoice))) As Invoice,Order_No+'-'+Left(Order_Line,3) As SO From Order_Hist_Line where {0};",v.local.sCustomers,v.Local.sSQL)
+	f.Intrinsic.Control.Else
+		v.Local.sSQL.Set("Select LTRIM(RTRIM(UPPER(invoice))) As Invoice,Order_No+'-'+Left(Order_Line,3) As SO From Order_Hist_Line")
+	f.Intrinsic.Control.EndIf
+	F.Data.Dictionary.CreateFromSQL("dSO","TempCon",v.Local.sSQL)
+	F.Data.Dictionary.SetDefaultReturn("dSO","")
+	F.Data.DataTable.FillFromDictionary("dtTempAging0","dSO","INVOICE","SALES_ORDER")
+	F.Data.Dictionary.Close("dSO")
+
+	'Set Email
+	f.Intrinsic.String.Build("Select LTRIM(RTRIM(UPPER(customer))) As Customer,RTrim(Email) As Email from V_Customer_Sales Where Email <> '' {0};",v.Args.sCustomers,v.Local.sSQL)
+	F.Data.Dictionary.CreateFromSQL("dEmail","TempCon",v.Local.sSQL)
+	F.Data.Dictionary.SetDefaultReturn("dEmail","")
+	F.Data.DataTable.FillFromDictionary("dtTempAging0","dEmail","CUSTOMER","EMAIL")
+	F.Data.Dictionary.Close("dEmail")
+
+	'Set Telephone
+	f.Intrinsic.String.Build("Select LTRIM(RTRIM(UPPER(customer))) As Customer,Case When Length(LTrim(Telephone)) = 13 Then Left(LTrim(Telephone),3)+'-'+Substring(LTrim(Telephone),4,3)+'-'+Substring(LTrim(Telephone),8,3)+'-'+Right(LTrim(Telephone),4) When Length(LTrim(Telephone)) = 10 Then Left(LTrim(Telephone),3)+'-'+Substring(LTrim(Telephone),4,3)+'-'+Right(LTrim(Telephone),4) Else Telephone End As Telephone From V_Customer_Master Where Telephone <> '' {0} Order by Customer;",v.Args.sCustomers,v.Local.sSQL)
+	F.Data.Dictionary.CreateFromSQL("dTele","TempCon",v.Local.sSQL)
+	F.Data.Dictionary.SetDefaultReturn("dTele","")
+	F.Data.DataTable.FillFromDictionary("dtTempAging0","dTele","CUSTOMER","TELEPHONE")	
+	F.Data.Dictionary.Close("dTele")	
+	
+	F.Data.DataTable.AddColumn("dtTempAging0","OVER2",Float,0)
+	
+	F.Data.DataTable.AddColumn("dtTempAging0","CCC","String",v.Args.sCCC)
+	'V.Local.sFilter.Set("ZERO <> 0")
+
+	F.Data.DataView.Create("dtTempAging0","dvAging0",22,V.Local.sFilter,"")
+	
+	F.Data.DataView.ToDataTable("dtTempAging0","dvAging0","dtTempAging",True)
+	
+	F.ODBC.Connection!TempCon.close
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.LoadIndividualDatatable.End
+
+Program.Sub.LoadGvAging.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	V.Local.sCaption.Declare
+
+	Gui.FrmAging.GSGCAging.AddGridviewFromDataTable("gvAging","dtAging")
+	Gui.FrmAging.GSGCAging.SuspendLayout()
+	
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","MultiSelect",True)
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","OptionBehaviorEditable",True)
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","AllowSort",True)
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","AllowFilter",True)
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","OptionsDetailShowDetailTabs",True)
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","OptionsViewShowGroupPanel",True)
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","OptionsViewColumnAutoWidth",False)
+	
+
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","OptionsFindAlwaysVisible",True)
+	Gui.FrmAging.GSGCAging.SetGridViewProperty("gvAging","OptionsViewShowAutoFilterRow",True)	
+		
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ZERO","Visible",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AGE_CASH","Visible",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AGE_CASH2","Visible",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AGE_CASH3","Visible",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTINV","Visible",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","Visible",False)
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","ShowCaption",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","ShowCaption",False)
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","Caption","Cust. No.")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","Caption","Customer Name")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","Caption","Salesperson")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","BRANCH","Caption","Branch")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","INVOICE","Caption","Invoice")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","Caption","Invoice Date")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","Caption","Transction Date")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","Caption","Due Date")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TYPE","Caption","Type")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","REFERENCE","Caption","Reference")
+	F.Intrinsic.String.Build("Amount ({0})",V.Company.CurrencySymbol,V.Local.sCaption)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","Caption",V.Local.sCaption)
+	F.Intrinsic.String.Build("Current ({0})",V.Company.CurrencySymbol,V.Local.sCaption)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","Caption",V.Local.sCaption)
+	
+
+		F.Intrinsic.String.Build("1-30 ({0})",V.Company.CurrencySymbol,V.Local.sCaption)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","Caption",V.Local.sCaption)
+		F.Intrinsic.String.Build("31-60 ({0})",V.Company.CurrencySymbol,V.Local.sCaption)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","Caption",V.Local.sCaption)
+		F.Intrinsic.String.Build("61-90 ({0})",V.Company.CurrencySymbol,V.Local.sCaption)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","Caption",V.Local.sCaption)
+		F.Intrinsic.String.Build("Over 90 ({0})",V.Company.CurrencySymbol,V.Local.sCaption)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","Caption",V.Local.sCaption)
+
+	
+	F.Intrinsic.String.Build("Not Aged ({0})",V.Company.CurrencySymbol,V.Local.sCaption)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","Caption",V.Local.sCaption)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","Caption","Column")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","Caption","Adjust")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","Caption","Cash Receipt")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","Caption","Sales Order")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","Caption","Email")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","Caption","Telephone")
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","BRANCH","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","INVOICE","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TYPE","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","REFERENCE","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","AllowEdit",False)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","AllowEdit",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","AllowEdit",True)
+	
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","ReadOnly",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","ReadOnly",True)
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","MinWidth","65")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","MinWidth","180")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","MinWidth","120")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","BRANCH","MinWidth","65")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","INVOICE","MinWidth","80")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","MinWidth","85")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","MinWidth","100")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","MinWidth","85")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TYPE","MinWidth","75")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","REFERENCE","MinWidth","95")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","MinWidth","95")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","MinWidth","95")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","MinWidth","95")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","MinWidth","95")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","MinWidth","95")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","MinWidth","105")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","MinWidth","65")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","MinWidth","45")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","MinWidth","85")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","MinWidth","80")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","MinWidth","165")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","MinWidth","120")
+	
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","BRANCH","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","INVOICE","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TYPE","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","REFERENCE","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","HeaderFontBold",True)
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CCC","HeaderFontBold",True)
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","HeaderHAlignment","Near")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","INVOICE","HeaderHAlignment","Near")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TYPE","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","REFERENCE","HeaderHAlignment","Near")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","HeaderHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","HeaderHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","HeaderHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","HeaderHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","HeaderHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","HeaderHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","HeaderHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","HeaderHAlignment","Center")
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","CellHAlignment","Near")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","INVOICE","CellHAlignment","Near")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TYPE","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","REFERENCE","CellHAlignment","Near")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","CellHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","CellHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","CellHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","CellHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","CellHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","CellHAlignment","Far")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","CellHAlignment","Center")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","CellHAlignment","Center")
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","DisplayCustomNumeric","#,###,###,##0.00")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","DisplayCustomNumeric","#,###,###,##0.00")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","DisplayCustomNumeric","#,###,###,##0.00")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","DisplayCustomNumeric","#,###,###,##0.00")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","DisplayCustomNumeric","#,###,###,##0.00")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","DisplayCustomNumeric","#,###,###,##0.00")
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","DisplayCustomDatetime","d")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","DisplayCustomDatetime","d")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","DisplayCustomDatetime","d")
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","HeaderBackColor","LightYellow")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","HeaderBackColor","LightSalmon")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","HeaderBackColor","LightPink")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","HeaderBackColor","LightSteelBlue")
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","CellBackColor","White")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","CellBackColor","White")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","CellBackColor","White")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","CellBackColor","Gray")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","CellBackColor","Gray")
+
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","CellForeColor","White")
+	Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","CellForeColor","White")
+	
+	Gui.FrmAging.GSGCAging.AddSummaryItem("gvAging","AMT_INVOICE","AMT_INVOICE","Sum","","","n")
+	Gui.FrmAging.GSGCAging.AddSummaryItem("gvAging","CURRENT1","CURRENT1","Sum","","","n")
+	Gui.FrmAging.GSGCAging.AddSummaryItem("gvAging","TPD2","TPD2","Sum","","","n")
+	Gui.FrmAging.GSGCAging.AddSummaryItem("gvAging","TPD3","TPD3","Sum","","","n")
+	Gui.FrmAging.GSGCAging.AddSummaryItem("gvAging","OVER","OVER","Sum","","","n")
+	Gui.FrmAging.GSGCAging.AddSummaryItem("gvAging","OVER2","OVER2","Sum","","","n")
+	Gui.FrmAging.GSGCAging.AddSummaryItem("gvAging","NOT_AGED","NOT_AGED","Sum","","","n")
+	
+'	F.Intrinsic.Control.If(V.Screen.FrmAging!optAgeDueDate.Value)
+		'VisibleIndex
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CCC","VisibleIndex","0")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CUSTOMER","VisibleIndex","1")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NAME_CUSTOMER","VisibleIndex","2")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALESPERSON","VisibleIndex","3")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","BRANCH","VisibleIndex","4")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","INVOICE","VisibleIndex","5")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_INVOICE","VisibleIndex","6")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DATE_TRANSACTION","VisibleIndex","7")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","DUE_DATE","VisibleIndex","8")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TYPE","VisibleIndex","9")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","REFERENCE","VisibleIndex","10")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","AMT_INVOICE","VisibleIndex","11")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","CURRENT1","VisibleIndex","12")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","VisibleIndex","13")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","VisibleIndex","14")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","VisibleIndex","15")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","VisibleIndex","16")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","VisibleIndex","17")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","VisibleIndex","18")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","VisibleIndex","19")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","VisibleIndex","20")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","VisibleIndex","21")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","VisibleIndex","22")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","VisibleIndex","23")
+		
+		'Invisible
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","COLUMN1","Visible",False)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","ADJUST","Visible",False)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","PAY","Visible",False)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","SALES_ORDER","Visible",False)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","EMAIL","Visible",False)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TELEPHONE","Visible",False)
+		
+		'Colors
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD2","HeaderBackColor","LightYellow")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","TPD3","HeaderBackColor","LightSalmon")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER","HeaderBackColor","LightCyan")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","HeaderBackColor","LightPink")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","NOT_AGED","HeaderBackColor","LightSteelBlue")
+		'OVER2
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","AllowEdit",False)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","MinWidth","95")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","HeaderFontBold",True)
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","HeaderHAlignment","Far")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","CellHAlignment","Far")
+		Gui.FrmAging.GSGCAging.SetColumnProperty("gvAging","OVER2","DisplayCustomNumeric","#,###,###,##0.00")
+		
+		F.Intrinsic.Control.CallSub(ARAgingByDueDate)
+			
+	Gui.FrmAging.GSGCAging.AddGridGroupSummaryItem("gvAging","AMT_INVOICE","AMT_INVOICE","Sum","                                                                                                                                                                                                                                                                         Amount: ","","n2")
+	
+	Gui.FrmAging.GSGCAging.AddGridGroupSummaryItem("gvAging","CURRENT1","CURRENT1","Sum","       Current: ","","n2")
+	
+	Gui.FrmAging.GSGCAging.AddGridGroupSummaryItem("gvAging","TPD2","TPD2","Sum","       1-30: ","","n2")
+	
+	Gui.FrmAging.GSGCAging.AddGridGroupSummaryItem("gvAging","TPD3","TPD3","Sum","       31-60: ","","n2")
+	
+	Gui.FrmAging.GSGCAging.AddGridGroupSummaryItem("gvAging","OVER","OVER","Sum","       61-90: ","","n2")
+	
+	Gui.FrmAging.GSGCAging.AddGridGroupSummaryItem("gvAging","OVER2","OVER2","Sum","       Over 90: ","","n2")	
+	
+	Gui.FrmAging.GSGCAging.AddGridGroupSummaryItem("gvAging","NOT_AGED","NOT_AGED","Sum","       Not Aged: ","","n2")
+
+	
+	Gui.FrmAging.GSGCAging.ResumeLayout()
+	f.Intrinsic.Control.CallSub("Deserialize")
+	Gui.FrmAging.GSGCAging.MainView("gvAging")
+	
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.LoadGvAging.End
+
+Program.Sub.ARAgingByDueDate.Start
+	F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+
+	V.Local.iCnt.Declare
+	V.Local.fMons.Declare
+	V.Local.dDateInit.Declare
+	V.Local.dDatePres.Declare
+	V.Local.iDeter.Declare
+	V.Local.sType.Declare
+	V.Local.bAgeCash.Declare
+	V.Local.bAgeCash2.Declare
+	V.Local.bAgeCash3.Declare
+
+'	Gui.FrmAging.lblStatus.Caption("Aging AR....")
+'	Gui.FrmAging.pbStatus.Min(0)
+'	F.Intrinsic.Control.If(V.DataTable.dtAging.RowCount,=,0)
+'		Gui.FrmAging.pbStatus.Max(100)
+'		Gui.FrmAging.pbStatus.Value(100)
+'	F.Intrinsic.Control.Else
+'		Gui.FrmAging.pbStatus.Max(V.DataTable.dtAging.RowCount)
+'	F.Intrinsic.Control.EndIf
+
+v.Global.bPrintInvoice.Set(False)
+
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.dtAging.RowCount--,1)
+'		Gui.FrmAging.pbStatus.Value(V.Local.iCnt)
+		Gui.FrmAging.GSGCAging.GetCellValueByColumnName("gvAging","AMT_INVOICE",V.Local.iCnt,V.Local.fMons)
+		Gui.FrmAging.GSGCAging.GetCellValueByColumnName("gvAging","TYPE",V.Local.iCnt,V.Local.sType)
+		Gui.FrmAging.GSGCAging.GetCellValueByColumnName("gvAging","DUE_DATE",V.Local.iCnt,V.Local.dDateInit)
+		
+		V.local.dDatePres.Set(V.Screen.FrmAging!dtpAgeDate.Value)
+		F.Intrinsic.Date.DateDiff("D",V.Local.dDateInit,V.Local.dDatePres,V.Local.iDeter)
+		F.Intrinsic.Control.SelectCase(V.Local.sType)
+			F.Intrinsic.Control.CaseAny("Invoice","Adjustment","Credit Memo","Discount")
+				f.Intrinsic.Control.If(v.Global.bPrintInvoice)
+					Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",3,V.Local.iCnt,"ForeColor","Blue")
+				f.Intrinsic.Control.EndIf				
+				Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",16,V.Local.iCnt,"ForeColor","White")
+				Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",16,V.Local.iCnt,"BackColor","Gray")
+				Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",16,V.Local.iCnt,"Halignment","Center")
+				Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","PAY",V.Local.iCnt,"Cash Receipt")
+				F.Intrinsic.Control.If(V.Local.iDeter,<,1)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","CURRENT1",V.Local.iCnt,V.Local.fMons)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,1)
+				F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,1)
+				F.Intrinsic.Control.AndIf(V.Local.iDeter,<=,30)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","TPD2",V.Local.iCnt,V.Local.fMons)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,2)
+					'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightYellow")
+				F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,31)
+				F.Intrinsic.Control.AndIf(V.Local.iDeter,<=,60)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","TPD3",V.Local.iCnt,V.Local.fMons)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,3)
+					'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightSalmon")
+				F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,61)
+				F.Intrinsic.Control.AndIf(V.Local.iDeter,<=,90)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","OVER",V.Local.iCnt,V.Local.fMons)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,3)
+					'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightCyan")
+				F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,91)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","OVER2",V.Local.iCnt,V.Local.fMons)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,4)
+					'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightPink")
+				F.Intrinsic.Control.EndIf
+			F.Intrinsic.Control.CaseAny("Cash","Fin. Charge","Exchange Variance")
+				Gui.FrmAging.GSGCAging.GetCellValueByColumnName("gvAging","AGE_CASH",V.Local.iCnt,V.Local.bAgeCash)
+				Gui.FrmAging.GSGCAging.GetCellValueByColumnName("gvAging","AGE_CASH2",V.Local.iCnt,V.Local.bAgeCash2)
+				Gui.FrmAging.GSGCAging.GetCellValueByColumnName("gvAging","AGE_CASH3",V.Local.iCnt,V.Local.bAgeCash3)
+				F.Intrinsic.Control.If(V.Local.bAgeCash,=,True,OR,V.Local.bAgeCash2,=,True,V.Local.bAgeCash3,=,True)
+					f.Intrinsic.Control.If(v.Global.bPrintInvoice)
+						Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",3,V.Local.iCnt,"ForeColor","Blue")
+					f.Intrinsic.Control.EndIf					
+					Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",16,V.Local.iCnt,"ForeColor","White")
+					Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",16,V.Local.iCnt,"BackColor","Gray")
+					Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",16,V.Local.iCnt,"Halignment","Center")
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","PAY",V.Local.iCnt,"Cash Receipt")
+					F.Intrinsic.Control.If(V.Local.iDeter,<,1)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","CURRENT1",V.Local.iCnt,V.Local.fMons)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,1)
+					F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,1)
+					F.Intrinsic.Control.AndIf(V.Local.iDeter,<=,30)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","TPD2",V.Local.iCnt,V.Local.fMons)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,2)
+						'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightYellow")
+					F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,31)
+					F.Intrinsic.Control.AndIf(V.Local.iDeter,<=,60)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","TPD3",V.Local.iCnt,V.Local.fMons)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,3)
+						'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightSalmon")
+					F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,61)
+					F.Intrinsic.Control.AndIf(V.Local.iDeter,<=,90)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","OVER",V.Local.iCnt,V.Local.fMons)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,3)
+						'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightCyan")
+					F.Intrinsic.Control.ElseIf(V.Local.iDeter,>=,91)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","OVER2",V.Local.iCnt,V.Local.fMons)
+						Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,4)
+						'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightPink")
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.Else
+					f.Intrinsic.Control.If(v.Global.bPrintInvoice)
+						Gui.FrmAging.GSGCAging.SetCellAppearance("gvAging",3,V.Local.iCnt,"ForeColor","Blue")
+					f.Intrinsic.Control.EndIf					
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","NOT_AGED",V.Local.iCnt,V.Local.fMons)
+					Gui.FrmAging.GSGCAging.SetCellValueByColumnName("gvAging","COLUMN1",V.Local.iCnt,5)
+					'Gui.FrmAging.GSGCAging.SetRowAppearance("gvAging",V.Local.iCnt,"BackColor","LightSteelBlue")
+				F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.EndSelect	
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+
+	F.Intrinsic.Control.Catch
+		F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Intrinsic.Control.End 
+	F.Intrinsic.Control.EndTry
+Program.Sub.ARAgingByDueDate.End
+
+Program.Sub.FrmAging_UnLoad.Start
+F.Intrinsic.Control.If(V.DataTable.dtAging.Exists)
+	F.Intrinsic.Control.CallSub("Serialize")
+F.Intrinsic.Control.EndIf
+f.Intrinsic.Control.CallSub("Unload")
+Program.Sub.FrmAging_UnLoad.End
+
+Program.Sub.Unload.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.ODBC.conx.Exists)
+		F.ODBC.Connection!conx.close
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.ODBC.TempCon.Exists)
+		F.ODBC.Connection!TempCon.close
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	Function.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.End
+Program.Sub.Unload.End
+
+Program.Sub.cmdExport_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	
+		V.Local.sFileExport.Declare
+	V.Local.bExcel.Declare
+	V.Local.bFileLocked.Declare
+	V.Local.sMsg.Declare
+
+	F.Automation.MSExcel.CheckPresence(V.Local.bExcel)
+
+	F.Intrinsic.Control.If(V.Local.bExcel)
+		
+		F.Intrinsic.String.Build("{0}\Aging_{1}.xlsx",V.Caller.LocalGssTempDir,v.Ambient.Now.FormatMMDDYYYYHhNnSs,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.FrmAging.GSGCAging.Export(V.Local.sFileExport,"xlsx")
+			F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+		F.Intrinsic.Control.EndIf
+
+		
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("{0}\Aging.csv",V.Caller.LocalGssTempDir,v.Ambient.Now.FormatMMDDYYYYHhNnSs,V.Local.sFileExport)
+		F.Intrinsic.File.IsFileLocked(V.Local.sFileExport,V.Local.bFileLocked)
+		F.Intrinsic.Control.If(V.Local.bFileLocked)
+			F.Intrinsic.String.Build("File is already open. Please close and export again.{0}File: {1}",V.Ambient.NewLine,V.Local.sFileExport,V.Local.sMsg)
+			F.Intrinsic.UI.Msgbox(V.Local.sMsg,"File In Use")
+		F.Intrinsic.Control.Else
+			Gui.FrmAging.GSGCAging.Export(V.Local.sFileExport,"csv")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)		
+		
+	F.Intrinsic.Control.EndIf
+	
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+        F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdExport_Click.End
+
+Program.Sub.Deserialize.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sSerialize.Declare	
+	
+	'gvAllShip
+	F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"gvAging",5641,1001,6,"",V.Local.sSerialize)
+	F.Intrinsic.Control.If(V.Local.sSerialize.Trim,<>,"")
+		Gui.FrmAging.GSGCAging.Deserialize(V.Local.sSerialize)
+	F.Intrinsic.Control.EndIf	
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.Serialize.Start
+f.Intrinsic.Control.Try
+	V.Local.sError.Declare	
+	V.Local.sSerialize.Declare
+	v.Local.sSQL.Declare	
+	v.Local.sUserID.Declare
+	
+	F.Global.Security.GetUserID(v.Caller.User,v.Caller.CompanyCode,v.Local.sUserID)
+	
+	'Delete old registry records
+	F.ODBC.Connection!common.OpenCommonConnection
+	f.Intrinsic.String.Build("Delete From Gs_Registry Where User_ID = '{0}' and Company = '{1}' and Reg_ID = 5641 and Seq = '1001';",v.Local.sUserID,v.Caller.CompanyCode,v.Local.sSQL)
+	F.ODBC.Connection!common.Execute(v.Local.sSQL)
+	F.ODBC.Connection!common.Close
+	'gvAging
+	Gui.FrmAging.GSGCAging.Serialize("gvAging",V.Local.sSerialize)
+	F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"gvAging",5641,1001,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.cmdSelectCustAndCCC_Click.Start
+gui.Form..Show
+Program.Sub.cmdSelectCustAndCCC_Click.End
+
+Program.Sub.Form_UnLoad.Start
+gui.Form..Visible(False)
+gui.FrmAging..Show
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.chkAllCustomers_Click.Start
+F.Intrinsic.Control.Try
+	v.Local.sError.Declare	
+	
+	F.Intrinsic.Control.If(V.DataTable.dtCustomer.Exists)
+		f.Data.DataTable.Close("dtCustomer")
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.Screen.Form!chkAllCustomers.Value,=,1)
+		'All customes checkbox is checked		
+		f.Data.DataTable.CreateFromSQL("dtCustomer","conx","Select Customer,Name_Customer as Name,'Delete' as Deleted from V_Customer_Master order by Customer",True)
+		f.Data.DataView.Create("dtCustomer","dvCustomer")
+		f.Intrinsic.Control.CallSub("Format_gsCustomer")
+	F.Intrinsic.Control.Else
+		'All customes checkbox is  UNchecked
+		f.Data.DataTable.Create("dtCustomer",True)
+		f.Data.DataTable.AddColumn("dtCustomer","Customer","String","")
+		f.Data.DataTable.AddColumn("dtCustomer","Name","String","")
+		f.Data.DataTable.AddColumn("dtCustomer","Deleted","String","Delete")
+		f.Data.DataView.Create("dtCustomer","dvCustomer")
+		f.Intrinsic.Control.CallSub("Format_gsCustomer")		
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.chkAllCustomers_Click.End
+
+Program.Sub.txtEndCust_LostFocus.Start
+v.Local.sEndCust.Declare
+v.Local.sEndCust.Set(v.Screen.Form!txtEndCust.Text)
+gui.Form.txtEndCust.Text(v.Local.sEndCust.UCase)
+Program.Sub.txtEndCust_LostFocus.End
+
+Program.Sub.Comments.Start
+${$5$}$2.0.0.0$}$2
+${$6$}$Angel$}$20220728104406608$}$KXl0r/FkrMYwb/r4ukQ87aOTsTN7X2eaT3vNcO9KJhiYmf3oNYCczdk0SJ85HWuqtCKScyUsvkY=
+Program.Sub.Comments.End
