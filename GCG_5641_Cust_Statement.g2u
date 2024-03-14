@@ -1,0 +1,567 @@
+Program.Sub.ScreenSU.Start
+Gui.Form..Create
+Gui.Form..Caption("Company Code Selection")
+Gui.Form..Size(7200,10275)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form.gsCCC.Create(GsGridControl)
+Gui.Form.gsCCC.Size(2610,7470)
+Gui.Form.gsCCC.Position(4365,1800)
+Gui.Form.cmdOK.Create(Button)
+Gui.Form.cmdOK.Size(855,375)
+Gui.Form.cmdOK.Position(90,9360)
+Gui.Form.cmdOK.Caption("OK")
+Gui.Form.cmdOK.Event(Click,cmdOK_Click)
+Gui.Form.chkAllCustomers.Create(CheckBox)
+Gui.Form.chkAllCustomers.Size(1560,360)
+Gui.Form.chkAllCustomers.Position(90,720)
+Gui.Form.chkAllCustomers.Caption("All Customers")
+Gui.Form.chkAllCustomers.Event(Click,chkAllCustomers_Click)
+Gui.Form.gsCustomer.Create(GsGridControl)
+Gui.Form.gsCustomer.Size(4155,7485)
+Gui.Form.gsCustomer.Position(90,1800)
+Gui.Form.gsCustomer.Event(RowCellClick,gsCustomer_RowCellClick)
+Gui.Form.cmdAdd.Create(Button)
+Gui.Form.cmdAdd.Size(855,375)
+Gui.Form.cmdAdd.Position(3405,1365)
+Gui.Form.cmdAdd.Caption("Add")
+Gui.Form.cmdAdd.Event(Click,cmdAdd_Click)
+Gui.Form.txtBegCust.Create(TextBox,"",True,930,300,0,90,1395,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtBegCust.MaxLength(6)
+Gui.Form.txtBegCust.Event(LostFocus,txtBegCust_LostFocus)
+Gui.Form.txtEndCust.Create(TextBox,"",True,930,300,0,1770,1395,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtEndCust.MaxLength(6)
+Gui.Form.txtEndCust.Event(LostFocus,txtEndCust_LostFocus)
+Gui.Form.cmdBrowseBeginningCust.Create(Button)
+Gui.Form.cmdBrowseBeginningCust.Size(435,375)
+Gui.Form.cmdBrowseBeginningCust.Position(1125,1365)
+Gui.Form.cmdBrowseBeginningCust.Caption("^")
+Gui.Form.cmdBrowseBeginningCust.Event(Click,cmdBrowseBeginningCust_Click)
+Gui.Form.cmdBrowseEndingCust.Create(Button)
+Gui.Form.cmdBrowseEndingCust.Size(435,375)
+Gui.Form.cmdBrowseEndingCust.Position(2805,1365)
+Gui.Form.cmdBrowseEndingCust.Caption("^")
+Gui.Form.cmdBrowseEndingCust.Event(Click,cmdBrowseEndingCust_Click)
+Gui.Form.lbl1.Create(Label,"Beginning Customer",True,1635,255,0,90,1125,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl2.Create(Label,"Ending Customer",True,1440,255,0,1770,1125,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl3.Create(Label,"Company Codes",True,1410,255,0,4320,825,True,0,"Arial",8,-2147483633,0)
+Gui.Form.cmdUncheckAllCCC.Create(Button)
+Gui.Form.cmdUncheckAllCCC.Size(1080,375)
+Gui.Form.cmdUncheckAllCCC.Position(5895,1380)
+Gui.Form.cmdUncheckAllCCC.Caption("Uncheck All")
+Gui.Form.cmdUncheckAllCCC.Event(Click,cmdUncheckAllCCC_Click)
+Gui.Form.cmdCheckAllCCC.Create(Button)
+Gui.Form.cmdCheckAllCCC.Size(1080,375)
+Gui.Form.cmdCheckAllCCC.Position(5895,930)
+Gui.Form.cmdCheckAllCCC.Caption("Check All")
+Gui.Form.cmdCheckAllCCC.Event(Click,cmdCheckAllCCC_Click)
+Gui.Form.dtpAgeDate.Create(DatePicker)
+Gui.Form.dtpAgeDate.Size(1935,285)
+Gui.Form.dtpAgeDate.Position(75,345)
+Gui.Form.lbl4.Create(Label,"Aging Date",True,1935,255,0,105,135,True,0,"Arial",8,-2147483633,0)
+Gui.Progress..Create
+Gui.Progress..Caption("Progress")
+Gui.Progress..Size(11430,1710)
+Gui.Progress..MinX(0)
+Gui.Progress..MinY(0)
+Gui.Progress..Position(0,0)
+Gui.Progress..BackColor(-2147483633)
+Gui.Progress..MousePointer(0)
+Gui.Progress..Event(UnLoad,Progress_UnLoad)
+Gui.Progress.progressBar1.Create(ProgressBar)
+Gui.Progress.progressBar1.Size(10920,255)
+Gui.Progress.progressBar1.Position(240,300)
+Gui.Progress.txtCust.Create(TextBox,"",True,765,300,0,240,675,True,0,"Arial",8,-2147483643,1)
+Gui.Progress.txtDB.Create(TextBox,"",True,600,300,0,1140,675,True,0,"Arial",8,-2147483643,1)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'BN, Aug 23, 2019
+'Customer: Ohio Penal Industries
+'This program will consolidate Customer Statement from multiple CCC
+
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+
+	f.ODBC.Connection!conx.OpenCompanyconnection(500)	
+	f.Intrinsic.Control.CallSub("Check_And_Create_Custom_DB")
+	f.Intrinsic.Control.CallSub("Check_And_Create_Custom_Folder")
+	f.Intrinsic.Control.CallSub("Create_dtCustomer_dtCCC")
+	
+	gui.Form..Show
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.Check_And_Create_Custom_Folder.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.bEx.Declare
+	v.Local.sDir.Declare
+	
+	f.Intrinsic.String.Build("{0}\Custom",v.Caller.GlobalDir,v.Local.sDir)
+	f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("{0}\Custom\5641",v.Caller.GlobalDir,v.Local.sDir)
+	f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("{0}\Custom\5641\{1}",v.Caller.GlobalDir,v.Caller.CompanyCode,v.Local.sDir)
+	f.Intrinsic.File.DirExists(v.Local.sDir,v.Local.bEx)
+	f.Intrinsic.Control.If(v.Local.bEx.Not)
+		f.Intrinsic.File.CreateDir(v.Local.sDir)
+	f.Intrinsic.Control.EndIf	
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Check_And_Create_Custom_Folder.End
+
+Program.Sub.Unload.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.ODBC.conx.State,=,1)
+		F.ODBC.Connection!conx.close
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	Function.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.End
+Program.Sub.Unload.End
+
+Program.Sub.Check_And_Create_Custom_DB.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.bExist.Declare
+	
+	'Create custom table
+	F.ODBC.Connection!conx.TableExists("GCG_5641_AR_STMNT",v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist,=,false)
+		f.Intrinsic.UI.InvokeWaitDialog("Creating custom table GCG_5641_AR_STMNT ...")
+		f.ODBC.Connection!conx.Execute("CREATE TABLE GCG_5641_AR_STMNT ( TERMINAL_NO CHAR(3), RPTID CHAR(6), ACCOUNT CHAR(6), KEY_COPY_NO CHAR(1), KEY_SEQ CHAR(6), DATE CHAR(6), BILL_NAME CHAR(30), BILL_ADDRESS1 CHAR(30), BILL_ADDRESS2 CHAR(30), BILL_ADDRESS3 CHAR(30), BILL_ADDRESS4 CHAR(30), BILL_ADDRESS5 CHAR(30), INTL CHAR(1), BILL_CITY CHAR(15), BILL_STATE CHAR(2), BILL_ZIP CHAR(13), BILL_COUNTRY CHAR(12), ATTN CHAR(30), ITEM_DATE CHAR(6), INVOICE CHAR(6), TYPE CHAR(15), PO CHAR(15), FILL_1 NUMERIC(1,0), CHARGES NUMERIC(15,2), FILL_2 NUMERIC(1,0), CREDITS NUMERIC(15,2), TOT_MARKER CHAR(1), FILL_3 NUMERIC(1,0), TOT_CHGS NUMERIC(15,2), FILL_4 NUMERIC(1,0), TOT_CREDITS NUMERIC(15,2), FILL_5 NUMERIC(1,0), TOT_CURRENT NUMERIC(15,2), FILL_6 NUMERIC(1,0), TOT_30 NUMERIC(15,2), FILL_7 NUMERIC(1,0), TOT_60 NUMERIC(15,2), FILL_8 NUMERIC(1,0), TOT_90 NUMERIC(15,2), FILL_9 NUMERIC(1,0), TOT_DUE NUMERIC(15,2), PHONE CHAR(16), FAX CHAR(16), CURR_SYMBOL CHAR(10), FRM_TEXT_1 CHAR(120), FRM_TEXT_2 CHAR(120), FRM_TEXT_3 CHAR(120), FRM_TEXT_4 CHAR(120), COPY_TITLE CHAR(20), FILLER CHAR(5), CCC CHAR(3));")
+		f.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.Endif
+	
+	'Create custom view
+	F.ODBC.Connection!conx.TableExists("V_GCG_5641",v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist,=,false)
+		f.Intrinsic.UI.InvokeWaitDialog("Creating custom view V_GCG_5641 ...")
+		f.ODBC.Connection!conx.Execute("CREATE VIEW V_GCG_5641 AS SELECT GCG_5641_AR_STMNT .TERMINAL_NO ,GCG_5641_AR_STMNT .RPTID ,GCG_5641_AR_STMNT .ACCOUNT ,GCG_5641_AR_STMNT .KEY_COPY_NO ,GCG_5641_AR_STMNT .KEY_SEQ ,IF (SUBSTRING (GCG_5641_AR_STMNT .DATE ,1 ,2 )<= '99' AND SUBSTRING (GCG_5641_AR_STMNT .DATE ,1 ,2 )>= '00' AND SUBSTRING (GCG_5641_AR_STMNT .DATE ,3 ,2 )<= '12' AND SUBSTRING (GCG_5641_AR_STMNT .DATE ,3 ,2 )>= '01' AND SUBSTRING (GCG_5641_AR_STMNT .DATE ,5 ,2 )<= '31' AND SUBSTRING (GCG_5641_AR_STMNT .DATE ,5 ,2 )>= '01' ,IF (SUBSTRING (GCG_5641_AR_STMNT .DATE ,1 ,2 )< '80' ,CONVERT ('20' +SUBSTRING (GCG_5641_AR_STMNT .DATE ,1 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .DATE ,3 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .DATE ,5 ,2 ),SQL_DATE ),CONVERT ('19' +SUBSTRING (GCG_5641_AR_STMNT .DATE ,1 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .DATE ,3 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .DATE ,5 ,2 ),SQL_DATE )),CONVERT ('1900-01-01' ,SQL_DATE ))DATE ,GCG_5641_AR_STMNT .BILL_NAME ,GCG_5641_AR_STMNT .BILL_ADDRESS1 ,GCG_5641_AR_STMNT .BILL_ADDRESS2 ,GCG_5641_AR_STMNT .BILL_ADDRESS3 ,GCG_5641_AR_STMNT .BILL_ADDRESS4 ,GCG_5641_AR_STMNT .BILL_ADDRESS5 ,GCG_5641_AR_STMNT .INTL ,GCG_5641_AR_STMNT .BILL_CITY ,GCG_5641_AR_STMNT .BILL_STATE ,GCG_5641_AR_STMNT .BILL_ZIP ,GCG_5641_AR_STMNT .BILL_COUNTRY ,GCG_5641_AR_STMNT .ATTN ,IF (SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,1 ,2 )<= '99' AND SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,1 ,2 )>= '00' AND SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,3 ,2 )<= '12' AND SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,3 ,2 )>= '01' AND SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,5 ,2 )<= '31' AND SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,5 ,2 )>= '01' ,IF (SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,1 ,2 )< '80' ,CONVERT ('20' +SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,1 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,3 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,5 ,2 ),SQL_DATE ),CONVERT ('19' +SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,1 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,3 ,2 )+'-' +SUBSTRING (GCG_5641_AR_STMNT .ITEM_DATE ,5 ,2 ),SQL_DATE )),CONVERT ('1900-01-01' ,SQL_DATE ))ITEM_DATE ,GCG_5641_AR_STMNT .INVOICE ,GCG_5641_AR_STMNT .TYPE ,GCG_5641_AR_STMNT .PO ,GCG_5641_AR_STMNT .CHARGES ,GCG_5641_AR_STMNT .CREDITS ,GCG_5641_AR_STMNT .TOT_MARKER ,GCG_5641_AR_STMNT .TOT_CHGS ,GCG_5641_AR_STMNT .TOT_CREDITS ,GCG_5641_AR_STMNT .TOT_CURRENT ,GCG_5641_AR_STMNT .TOT_30 ,GCG_5641_AR_STMNT .TOT_60 ,GCG_5641_AR_STMNT .TOT_90 ,GCG_5641_AR_STMNT .TOT_DUE ,GCG_5641_AR_STMNT .PHONE ,GCG_5641_AR_STMNT .FAX ,GCG_5641_AR_STMNT .CURR_SYMBOL ,GCG_5641_AR_STMNT .FRM_TEXT_1 ,GCG_5641_AR_STMNT .FRM_TEXT_2 ,GCG_5641_AR_STMNT .FRM_TEXT_3 ,GCG_5641_AR_STMNT .FRM_TEXT_4 ,GCG_5641_AR_STMNT .COPY_TITLE,GCG_5641_AR_STMNT .CCC FROM GCG_5641_AR_STMNT GCG_5641_AR_STMNT")		
+		f.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.Endif
+
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Check_And_Create_Custom_DB.End
+
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.CallSub("Unload")
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Create_dtCustomer_dtCCC.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sDSNList.Declare
+	v.Local.bEx.Declare
+	v.Local.sCCC.Declare
+	v.Local.iCnt.Declare
+
+	
+	'dtCustomer
+	f.Data.DataTable.Create("dtCustomer",True)
+	f.Data.DataTable.AddColumn("dtCustomer","Customer","String","")
+	f.Data.DataTable.AddColumn("dtCustomer","Name","String","")
+	f.Data.DataTable.AddColumn("dtCustomer","Deleted","String","Delete")
+	f.Data.DataView.Create("dtCustomer","dvCustomer")
+	f.Intrinsic.Control.CallSub("Format_gsCustomer")
+	
+	'PDSN
+	f.Data.DataTable.Create("CCC",True)
+	f.Data.DataTable.AddColumn("CCC","Code","String","")
+	f.Data.DataTable.AddColumn("CCC","Selected","Boolean",False)
+
+	Function.ODBC.Misc.GETDSNLIST(v.Local.sDSNList)
+	F.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sDSNList.UBound,1)
+		f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"GLOBAL_",True,V.Local.bEx)
+		f.Intrinsic.Control.If(v.Local.bEx)
+			f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"TEMP",True,v.Local.bEx)
+			f.Intrinsic.Control.If(v.Local.bEx.Not)
+				f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"DEFAULT",True,v.Local.bEx)
+				F.Intrinsic.Control.If(V.Local.bEx.Not)
+					f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"COMMON",True,v.Local.bEx)
+					F.Intrinsic.Control.If(V.Local.bEx.Not)
+						f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"PLA",True,v.Local.bEx)
+						F.Intrinsic.Control.If(V.Local.bEx.Not)
+							f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"TPS",True,v.Local.bEx)
+							F.Intrinsic.Control.If(V.Local.bEx.Not)
+								f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"OPI",True,v.Local.bEx)
+								F.Intrinsic.Control.If(V.Local.bEx.Not)
+									f.Intrinsic.String.IsInString(v.Local.sDSNList(v.Local.iCnt),"_Z",True,v.Local.bEx)
+										F.Intrinsic.Control.If(V.Local.bEx.Not)
+										
+											f.Intrinsic.String.Replace(v.Local.sDSNList(v.Local.iCnt),"GLOBAL_","",V.Local.sCCC)
+											F.Data.DataTable.AddRow("CCC","Code",v.Local.sCCC)
+										
+										F.Intrinsic.Control.EndIf									
+								F.Intrinsic.Control.EndIf
+							F.Intrinsic.Control.EndIf
+						F.Intrinsic.Control.EndIf
+					F.Intrinsic.Control.EndIf
+				F.Intrinsic.Control.EndIf
+			f.Intrinsic.Control.EndIf
+		
+		f.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	f.Data.DataView.Create("CCC","dvCCC")	
+	gui.Form.gsCCC.AddGridviewFromDatatable("gvCCC","CCC")
+	Gui.Form.gsCCC.SetGridViewProperty("gvCCC","AllowSort",True)
+	Gui.Form.gsCCC.SetGridViewProperty("gvCCC","AllowFilter",True)
+	Gui.Form.gsCCC.SetGridViewProperty("gvCCC","OptionsViewShowAutoFilterRow",True)
+	gui.Form.gsCCC.SetColumnProperty("gvCCC","Selected","AllowEdit",True)
+	gui.Form.gsCCC.SetColumnProperty("gvCCC","Selected","ReadOnly",False)	
+	gui.Form.gsCCC.MainView("gvCCC")
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Create_dtCustomer_dtCCC.End
+
+Program.Sub.Format_gsCustomer.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	
+	gui.Form.gsCustomer.AddGridviewFromDatatable("gvCustomer","dtCustomer")
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","AllowSort",True)
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","AllowFilter",True)
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","OptionsFindAlwaysVisible",True)
+	Gui.Form.gsCustomer.SetGridViewProperty("gvCustomer","OptionsViewShowAutoFilterRow",True)
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Customer","Width","30")
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","Width","30")
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","AllowEdit",False)
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","ReadOnly",True)
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","Caption","Delete")
+	
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","HeaderHAlignment","center")
+	gui.Form.gsCustomer.SetColumnProperty("gvCustomer","Deleted","CellHAlignment","center")
+	
+	gui.Form.gsCustomer.ColumnEdit("gvCustomer","Deleted","editorbutton","Delete")
+	gui.Form.gsCustomer.MainView("gvCustomer")
+
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Format_gsCustomer.End
+
+Program.Sub.gsCustomer_RowCellClick.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sColumn.Declare
+	
+	v.Local.sColumn.Set(v.Args.Column)
+	f.Intrinsic.Control.If(v.Local.sColumn.UCase,=,"DELETED")
+		F.Data.DataTable.DeleteRow("dtCustomer",V.Args.RowIndex)
+		f.Data.DataTable.AcceptChanges("dtCustomer")
+	f.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsCustomer_RowCellClick.End
+
+Program.Sub.cmdOK_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	v.Local.sHold.Declare
+	v.Local.sDB.Declare
+	v.Local.sUser.Declare
+	v.Local.sTerminal.Declare
+	v.Local.sOriginalCaller.Declare
+	v.Local.iCnt.Declare
+	v.Local.iInner.Declare
+	v.Local.dSelectedDate.Declare
+	v.Local.sParam.Declare
+
+	
+	v.Local.dSelectedDate.Set(v.Screen.Form!dtpAgeDate.Value)
+		
+	'Validating CCC
+	f.Data.DataView.SetFilter("CCC","dvCCC","Selected = 1")
+	f.Intrinsic.Control.If(v.DataView.CCC!dvCCC.RowCount,=,0)
+		f.Intrinsic.UI.Msgbox("Please select Company Code","Attention")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	
+	'Validating Customer
+	f.Intrinsic.Control.If(v.DataTable.dtCustomer.RowCount,=,0)
+		f.Intrinsic.UI.Msgbox("Please select Customer.","Attention")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	
+	gui.Form..Visible(False)
+	gui.Progress..Show
+	gui.Progress.progressBar1.Max(v.DataTable.dtCustomer.RowCount)
+	
+	'Set original
+	v.Local.sOriginalCaller.Set(v.Caller.CompanyCode)
+	v.Local.sUser.Set(v.Caller.User)
+	v.Local.sTerminal.Set(v.Caller.Terminal)
+	
+	'Delete current data of the User and Terminal
+	f.Intrinsic.String.Build("Delete from GCG_5641_AR_STMNT where Terminal_no = '{0}'",v.Local.sTerminal,v.Local.sSQL)
+	f.ODBC.Connection!conx.Execute(v.Local.sSQL)	
+	
+	v.Local.iBIRunID.Declare
+	v.Local.iLogID.Declare
+	v.Local.sVal.Declare
+	v.Local.iRet.Declare
+	v.Local.sFilePath.Declare
+	v.Local.iReportID.Declare
+	v.Local.sReportID.Declare
+	
+	
+	'Each customer, call the call wrapper in each DB
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.dtCustomer.RowCount--,1)
+		gui.Progress.progressBar1.Value(v.Local.iCnt)
+		F.Intrinsic.String.Build("{0}!*!{0}!*!{1}!*!Y!*!N!*!N!*!{3}!*!{2}!*!{2}!*!N!*!N",v.DataTable.dtCustomer(v.Local.iCnt).Customer!FieldValString,v.Local.dSelectedDate.FormatMMDDYY," ",v.Local.dSelectedDate.FormatMMDDYY,V.Local.sParam)
+		
+		gui.Progress.txtCust.Text(v.DataTable.dtCustomer(v.Local.iCnt).Customer!FieldValString)
+		
+		f.Intrinsic.Control.For(v.Local.iInner,0,v.DataView.CCC!dvCCC.RowCount--,1)
+		
+			gui.Progress.txtDB.Text(v.DataView.CCC!dvCCC(v.Local.iInner).Code!FieldValString)
+			
+			f.Global.General.OverrideCompany(v.DataView.CCC!dvCCC(v.Local.iInner).Code!FieldValString)
+			F.Global.General.CallWrapperSyncBIO(3050,V.Local.sParam)
+			'Connect to that CCC and get data			
+			f.Intrinsic.String.Build("GLOBAL_{0}",v.DataView.CCC!dvCCC(v.Local.iInner).Code!FieldValString,v.Local.sDB)			
+			 F.ODBC.Connection!conTemp.OpenConnection(V.Local.sDB,V.Ambient.PUser,V.Ambient.PPass,600)			
+			F.Intrinsic.String.Build("Select * from Laser_AR_STMNT where Terminal_No = '{0}' and Rptid = '000562' order by key_seq",v.Local.sTerminal,V.Local.sSQL)
+			f.Intrinsic.Control.If(v.DataTable.Temp.Exists)
+				f.Data.DataTable.Close("Temp")
+			f.Intrinsic.Control.EndIf
+			F.Data.DataTable.CreateFromSQL("Temp","conTemp",V.Local.sSQL,True)			
+			f.Data.DataTable.AddColumn("Temp","CCC","String",v.DataView.CCC!dvCCC(v.Local.iInner).Code!FieldValString)			
+			
+			'Close temp connection
+			F.ODBC.Connection!conTemp.Close	
+			
+			'Save data to custom table with key User and Terminal
+			f.Data.DataTable.SaveToDB("Temp","conx","GCG_5641_AR_STMNT","",128)
+			f.Data.DataTable.Close("Temp")		
+		
+		f.Intrinsic.Control.Next(v.Local.iInner)
+
+		'Set back to original caller
+		f.Global.General.OverrideCompany(v.Local.sOriginalCaller)
+		
+		'Print Report for this Customer
+		'Log report
+		f.Global.BI.GetIDFromName("GCG_5641_AR_Statements.RPT",v.Local.iReportID)
+		F.Intrinsic.String.LPad(V.Local.iReportID,"0",6,V.Local.sReportID)
+		F.Global.BI.GetRunID(V.Local.iBIRunID)
+		
+		'F.Global.BI.StartLogging(V.Local.iBIRunID,562,0,"",V.Local.iLogID)
+		F.Global.BI.StartLogging(v.Local.iBIRunID,v.Local.iReportID,0,"",v.Local.iLogID)	
+		
+		f.Intrinsic.String.Build("{0}\Custom\5641\{1}\{2}_{3}_{4}.pdf",v.Caller.GlobalDir,v.Caller.CompanyCode,v.DataTable.dtCustomer(v.Local.iCnt).Customer!FieldValString,v.Local.dSelectedDate.FormatYYYYMMDD,v.Ambient.Now.FormatYYYYMMDDHHNNSS,v.Local.sFilePath)
+		V.Local.sParam.Set("Terminal*!*ReportID*!*ATTN*!*Title1*!*Title2*!*Title3*!*Title4*!*Logo*!*Account")
+		F.Intrinsic.String.Build("{0}*!*{5}*!*N*!*{1}*!*{2}*!*{3}*!*{4}*!*\\OPI-GSHOPDB02\APPS\GLOBAL\BUSINT\CUSTOM\OPI FORUM LOGO1.JPG*!*{6}",V.Local.sTerminal,"Current","0-30","31-60","61-90","000562",v.DataTable.dtCustomer(v.Local.iCnt).Customer!FieldValString,V.Local.sVal)
+		F.Global.BI.RunReportPreProcessor(V.Local.iBIRunID,V.Local.iLogID,V.Local.sParam,V.Local.sVal,"",4,True,"",-1,"",0,V.Local.sFilePath,"",V.Local.iRet)
+		
+		F.Global.BI.StopLogging(V.Local.iLogID)
+		
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	
+	f.Intrinsic.Control.CallSub("Unload")
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+    F.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdOK_Click.End
+
+Program.Sub.cmdBrowseBeginningCust_Click.Start
+'Browse Beginning Customer
+F.Intrinsic.Control.Try
+	V.Local..BulkDeclareString(sError,sRet)
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet.IsCancel,=,False)
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		gui.Form.txtBegCust.Text(v.Local.sRet(0))
+		gui.Form.txtEndCust.Text(v.Local.sRet(0))
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseBeginningCust_Click.End
+
+Program.Sub.cmdBrowseEndingCust_Click.Start
+'Browse Ending Customer
+F.Intrinsic.Control.Try
+	V.Local..BulkDeclareString(sError,sRet)
+	
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	F.Intrinsic.UI.Browser(205,"",V.Local.sRet)
+	F.Intrinsic.Control.If(V.Local.sRet.IsCancel,=,False)
+		F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+		gui.Form.txtEndCust.Text(v.Local.sRet(0))
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseEndingCust_Click.End
+
+Program.Sub.cmdAdd_Click.Start
+'Browse Ending Customer
+F.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sRet.Declare
+	v.Local.sSQL.Declare
+	v.Local.sBegCust.Declare
+	v.Local.sEndCust.Declare
+	v.Local.sBegName.Declare
+	v.Local.sEndName.Declare
+	v.Local.iCnt.Declare
+	v.Local.sFilter.Declare
+	
+	F.Intrinsic.String.UCase(v.Screen.Form!txtBegCust.Text.Trim,V.Local.sBegCust)
+	F.Intrinsic.String.UCase(v.Screen.Form!txtEndCust.Text.Trim,V.Local.sEndCust)
+	
+	'Check Beginning Customer
+	f.Intrinsic.String.Build("Select Customer,Name_Customer from v_customer_master where customer = '{0}'",v.Local.sBegCust,v.Local.sSQL)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,=,"")
+		f.Intrinsic.UI.Msgbox("Beginning Customer does not exist.","Attention")
+		f.Intrinsic.Control.ExitSub		
+	f.Intrinsic.Control.EndIf
+
+	'Check Ending Customer
+	f.Intrinsic.String.Build("Select Customer,Name_Customer from v_customer_master where customer = '{0}'",v.Local.sEndCust,v.Local.sSQL)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,=,"")
+		f.Intrinsic.UI.Msgbox("Ending Customer does not exist.","Attention")
+		f.Intrinsic.Control.ExitSub		
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.UI.InvokeWaitDialog("Adding customer...")
+	f.Intrinsic.Control.If(v.DataTable.Temp.Exists)
+		f.Data.DataTable.Close("Temp")
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.String.Build("Select Customer,Name_Customer from v_customer_master where customer between '{0}' and '{1}' ORDER BY CUSTOMER",v.Local.sBegCust,v.Local.sEndCust,v.Local.sSQL)
+	f.Data.DataTable.CreateFromSQL("Temp","conx",v.Local.sSQL,True)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.Temp.RowCount--,1)
+		f.Intrinsic.String.Build("Customer = '{0}'",v.DataTable.Temp(v.Local.iCnt).Customer!FieldValString,v.Local.sFilter)
+		f.Data.DataTable.Select("dtCustomer",v.Local.sFilter,v.Local.sRet)
+		f.Intrinsic.Control.If(v.Local.sRet,=,"***NORETURN***")
+			F.Data.DataTable.AddRow("dtCustomer","Customer",v.DataTable.Temp(v.Local.iCnt).Customer!FieldValString,"Name",v.DataTable.Temp(v.Local.iCnt).Name_Customer!FieldValString)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	f.Intrinsic.UI.CloseWaitDialog	
+
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdAdd_Click.End
+
+Program.Sub.cmdCheckAllCCC_Click.Start
+f.Data.DataTable.SetValue("CCC",-1,"Selected",True)
+Program.Sub.cmdCheckAllCCC_Click.End
+
+Program.Sub.cmdUncheckAllCCC_Click.Start
+f.Data.DataTable.SetValue("CCC",-1,"Selected",False)
+Program.Sub.cmdUncheckAllCCC_Click.End
+
+Program.Sub.Progress_UnLoad.Start
+f.Intrinsic.Control.CallSub("Unload")
+Program.Sub.Progress_UnLoad.End
+
+Program.Sub.txtBegCust_LostFocus.Start
+V.Local.sBegCust.Declare
+v.Local.sBegCust.Set(v.Screen.Form!txtBegCust.Text)
+gui.Form.txtBegCust.Text(v.Local.sBegCust.UCase)
+gui.Form.txtEndCust.Text(v.Local.sBegCust.UCase)
+Program.Sub.txtBegCust_LostFocus.End
+
+Program.Sub.chkAllCustomers_Click.Start
+F.Intrinsic.Control.Try
+	v.Local.sError.Declare	
+	
+	F.Intrinsic.Control.If(V.DataTable.dtCustomer.Exists)
+		f.Data.DataTable.Close("dtCustomer")
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.Screen.Form!chkAllCustomers.Value,=,1)
+		'All customes checkbox is checked		
+		f.Data.DataTable.CreateFromSQL("dtCustomer","conx","Select Customer,Name_Customer as Name,'Delete' as Deleted from V_Customer_Master order by Customer",True)
+		f.Data.DataView.Create("dtCustomer","dvCustomer")
+		f.Intrinsic.Control.CallSub("Format_gsCustomer")
+	F.Intrinsic.Control.Else
+		'All customes checkbox is  UNchecked
+		f.Data.DataTable.Create("dtCustomer",True)
+		f.Data.DataTable.AddColumn("dtCustomer","Customer","String","")
+		f.Data.DataTable.AddColumn("dtCustomer","Name","String","")
+		f.Data.DataTable.AddColumn("dtCustomer","Deleted","String","Delete")
+		f.Data.DataView.Create("dtCustomer","dvCustomer")
+		f.Intrinsic.Control.CallSub("Format_gsCustomer")		
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}GAB Version: {5}}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.chkAllCustomers_Click.End
+
+Program.Sub.txtEndCust_LostFocus.Start
+v.Local.sEndCust.Declare
+v.Local.sEndCust.Set(v.Screen.Form!txtEndCust.Text)
+gui.Form.txtEndCust.Text(v.Local.sEndCust.UCase)
+Program.Sub.txtEndCust_LostFocus.End
+
+
